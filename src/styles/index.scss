@@ -1,0 +1,12 @@
+// config -- 文件名定义的时候是有“_”的，但是引入的时候不用下划线，下划线是防止node-sass将scss编译成css用的，它只能被import导入。
+@import "variables";
+
+// layout
+@import "reboot";
+
+// mixin
+@import "mixin";
+
+
+// button
+@import "../components/Button/index"
