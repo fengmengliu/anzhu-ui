@@ -51,7 +51,7 @@ describe("test Button component", () => {
     const element = wrapper.getByText("Nice") as HTMLButtonElement;
     expect(element).toBeInTheDocument();
     expect(element.disabled).toBeTruthy();
-    fireEvent.click(element);
+    fireEvent.click(element); // 模拟事件点击，所以，fireEvent就是事件触发者
     expect(defaultProps.onClick).not.toHaveBeenCalled()
   });
 });
