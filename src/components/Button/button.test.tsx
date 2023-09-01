@@ -1,5 +1,5 @@
 import React from "react";
-import { render, fireEvent } from "@testing-library/react";
+import { render, fireEvent, screen } from "@testing-library/react";
 import Button, { ButtonProps, ButtonType, ButtonSize } from "./button";
 import exp from "constants";
 
@@ -21,8 +21,9 @@ const disabledProps: ButtonProps = {
 // it是test的别名
 describe("test Button component", () => {
   it("should render the correct default button", () => {
-    const wrapper = render(<Button {...defaultProps}>Nice</Button>);
-    const element = wrapper.getByText("Nice");
+    render(<Button {...defaultProps}>Nice</Button>);
+    const element = screen.getByText("Nice");
+    // const element = wrapper.getByText("Nice");
     expect(element).toBeInTheDocument(); // 判断该节点已经在dom上
     expect(element.tagName).toEqual("BUTTON");
     expect(element).toHaveClass("btn btn-default");
@@ -30,25 +31,25 @@ describe("test Button component", () => {
     expect(defaultProps.onClick).toHaveBeenCalled();
   });
   it("should render the correct component based on different props", () => {
-    const wrapper = render(<Button {...testProps}>Nice</Button>);
-    const element = wrapper.getByText("Nice");
+    render(<Button {...testProps}>Nice</Button>);
+    const element = screen.getByText("Nice");
     expect(element).toBeInTheDocument();
     expect(element).toHaveClass("btn-danger btn-lg klass");
   });
   it("should render a link when btnType equals link and href is provided", () => {
-    const wrapper = render(
+    render(
       <Button btnType={ButtonType.Link} href="http://www.baidu.com">
         link
       </Button>
     );
-    const element = wrapper.getByText("link");
+    const element = screen.getByText("link");
     expect(element).toBeInTheDocument();
     expect(element.tagName).toEqual("A");
     expect(element).toHaveClass("btn btn-link");
   });
   it("should render disabled button when disabled set to true", () => {
-    const wrapper = render(<Button {...disabledProps}>Nice</Button>);
-    const element = wrapper.getByText("Nice") as HTMLButtonElement;
+    render(<Button {...disabledProps}>Nice</Button>);
+    const element = screen.getByText("Nice") as HTMLButtonElement;
     expect(element).toBeInTheDocument();
     expect(element.disabled).toBeTruthy();
     fireEvent.click(element); // 模拟事件点击，所以，fireEvent就是事件触发者
