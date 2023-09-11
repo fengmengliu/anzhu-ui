@@ -42,7 +42,8 @@
     "build-ts": "tsc -p tsconfig.build.json",
     "build-css": "sass ./src/styles/index.scss ./dist/index.css",
     "prepublishOnly": "npm run test:nowatch && npm run lint && npm run build",
-    "prepare": "husky install"
+    "prepare": "husky install",
+    "pre-commit": "lint-staged"
   },
   "eslintConfig": {
     "extends": [
@@ -84,6 +85,7 @@
     "cross-env": "^7.0.3",
     "eslint-plugin-storybook": "^0.6.13",
     "husky": "^8.0.3",
+    "lint-staged": "^14.0.1",
     "prop-types": "^15.8.1",
     "react": "^18.2.0",
     "react-dom": "^18.2.0",
