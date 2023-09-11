@@ -1,7 +1,6 @@
 import React from "react";
 import { render, fireEvent, screen } from "@testing-library/react";
 import Button, { ButtonProps, ButtonType, ButtonSize } from "./button";
-import exp from "constants";
 
 const defaultProps = {
   onClick: jest.fn(),
@@ -15,7 +14,7 @@ const testProps: ButtonProps = {
 
 const disabledProps: ButtonProps = {
   disabled: true,
-  onClick: jest.fn()
+  onClick: jest.fn(),
 };
 
 // it是test的别名
@@ -53,6 +52,6 @@ describe("test Button component", () => {
     expect(element).toBeInTheDocument();
     expect(element.disabled).toBeTruthy();
     fireEvent.click(element); // 模拟事件点击，所以，fireEvent就是事件触发者
-    expect(defaultProps.onClick).not.toHaveBeenCalled()
+    expect(defaultProps.onClick).not.toHaveBeenCalled();
   });
 });
