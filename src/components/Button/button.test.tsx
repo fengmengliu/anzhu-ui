@@ -24,7 +24,7 @@ describe("test Button component", () => {
     const element = screen.getByText("Nice");
     // const element = wrapper.getByText("Nice");
     expect(element).toBeInTheDocument(); // 判断该节点已经在dom上
-    expect(element.tagName).toEqual("BUTTON-test");
+    expect(element.tagName).toEqual("BUTTON");
     expect(element).toHaveClass("btn btn-default");
     fireEvent.click(element);
     expect(defaultProps.onClick).toHaveBeenCalled();
